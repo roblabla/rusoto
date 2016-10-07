@@ -1,9 +1,14 @@
 use std::fs;
 use std::collections::HashMap;
 
+use std::env;
+
 use super::capitalize_first;
 
-#[derive(Debug, Clone	)]
+const BOTOCORE_TESTS_DIR: &'static str = concat!(env!("CARGO_MANIFEST_DIR"), "/botocore/tests/unit/response_parsing/xml/responses/");
+const OUR_TESTS_DIR: &'static str = concat!(env!("CARGO_MANIFEST_DIR"), "/tests/unit/responses/");
+
+#[derive(Debug, Clone)]
 pub struct Response {
     pub service: String,
     pub action: String,
@@ -59,11 +64,11 @@ pub fn find_responses_in_dir(dir_name: &str) -> Vec<Response> {
 pub fn find_responses() -> HashMap<String, Response> {
     let mut responses = HashMap::new();
 
-    for r in find_responses_in_dir("./codegen/botocore/tests/unit/response_parsing/xml/responses").into_iter() {
+    for r in find_responses_in_dir(BOTOCORE_TESTS_DIR).into_iter() {
         responses.insert(r.file_name.clone(), r);
     }
 
-    for r in find_responses_in_dir("./codegen/tests/unit/responses").into_iter() {
+    for r in find_responses_in_dir(OUR_TESTS_DIR).into_iter() {
         responses.insert(r.file_name.clone(), r);
     }
 
