@@ -1,8 +1,6 @@
 use std::fs;
 use std::collections::HashMap;
 
-use std::env;
-
 use super::capitalize_first;
 
 const BOTOCORE_TESTS_DIR: &'static str = concat!(env!("CARGO_MANIFEST_DIR"), "/botocore/tests/unit/response_parsing/xml/responses/");

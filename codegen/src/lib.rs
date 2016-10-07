@@ -2,7 +2,7 @@
 #![cfg_attr(feature = "serde_macros", feature(custom_derive, plugin))]
 #![cfg_attr(feature = "serde_macros", plugin(serde_macros))]
 #![cfg_attr(feature = "nightly-testing", plugin(clippy))]
-// #![cfg_attr(not(feature = "unstable"), deny(warnings))]
+#![cfg_attr(not(feature = "unstable"), deny(warnings))]
 
 extern crate inflector;
 #[macro_use]
